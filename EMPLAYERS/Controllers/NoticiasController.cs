@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using EMPLAYERS.Models;
 using Microsoft.AspNetCore.Http;
-
+using System.IO;
 
 namespace EMPLAYERS.Controllers
 {
@@ -27,7 +27,29 @@ namespace EMPLAYERS.Controllers
             novaNoticia.IdNoticias =Int32.Parse(form["IdNoticia"]);
             novaNoticia.Titulo =form["Titulo"];
             novaNoticia.Texto =form["Texto"];
-            novaNoticia.Imagem =form["Imagem"];
+            
+                // Upload Início
+            var file    = form.Files[0];
+            var folder  = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot/img/Noticias");
+
+            if(file != null)
+            {
+                if(!Directory.Exists(folder)){
+                    Directory.CreateDirectory(folder);
+                }
+
+                var path = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot/img/",file.FileName);
+                      using (var stream = new FileStream(path, FileMode.Create))  
+                {  
+                    file.CopyTo(stream);  
+                }
+                novaNoticia.Imagem   = file.FileName;
+            }
+            else
+            {
+                novaNoticia.Imagem   = "padrao.png";
+            }
+            // Upload Final
 
             noticiaModel1.Create(novaNoticia);
 
@@ -37,5 +59,7 @@ namespace EMPLAYERS.Controllers
 
             return LocalRedirect("~/Noticias");
         }
+
+        
     }
 }

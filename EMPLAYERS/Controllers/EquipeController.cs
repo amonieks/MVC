@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using EMPLAYERS.Models;
 using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace EMPLAYERS.Models
 {
@@ -26,7 +27,29 @@ namespace EMPLAYERS.Models
             Equipe novaEquipe = new Equipe();
             novaEquipe.IdEquipe =Int32.Parse(form["IdEquipe"]);
             novaEquipe.Nome =form["Nome"];
-            novaEquipe.Imagem =form["Imagem"];
+            
+            // Upload Início
+            var file    = form.Files[0];
+            var folder  = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/Equipe");
+
+            if(file != null)
+            {
+                if(!Directory.Exists(folder)){
+                    Directory.CreateDirectory(folder);
+                }
+
+                var path = Path.Combine(Directory.GetCurrentDirectory(), folder, file.FileName);
+                using (var stream = new FileStream(path, FileMode.Create))  
+                {  
+                    file.CopyTo(stream);  
+                }
+                novaEquipe.Imagem   = file.FileName;
+            }
+            else
+            {
+                novaEquipe.Imagem   = "padrao.png";
+            }
+            // Upload Final
 
             equipeModel1.Create(novaEquipe);
 
@@ -34,6 +57,15 @@ namespace EMPLAYERS.Models
 
 
 
+            return LocalRedirect("~/Equipe");
+        }
+
+        [Route("Equipe/id")]
+        public IActionResult Excluir(int id)
+        {
+           
+            equipeModel1.Delete(id);
+            ViewBag.Equipe=equipeModel1.ReadAll();
             return LocalRedirect("~/Equipe");
         }
 
