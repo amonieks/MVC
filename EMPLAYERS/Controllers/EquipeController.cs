@@ -30,7 +30,7 @@ namespace EMPLAYERS.Models
             
             // Upload Início
             var file    = form.Files[0];
-            var folder  = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/Equipe");
+            var folder  = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot/img/Equipe");
 
             if(file != null)
             {
@@ -38,7 +38,7 @@ namespace EMPLAYERS.Models
                     Directory.CreateDirectory(folder);
                 }
 
-                var path = Path.Combine(Directory.GetCurrentDirectory(), folder, file.FileName);
+                var path = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot/img/",folder, file.FileName);
                 using (var stream = new FileStream(path, FileMode.Create))  
                 {  
                     file.CopyTo(stream);  
