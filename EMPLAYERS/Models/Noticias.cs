@@ -59,10 +59,10 @@ namespace EMPLAYERS.Models
             RewriteCSV(PATH, linhas);
         }
 
-        public void Delete(int idNoticia)
+        public void Delete(int id)
         {
             List<string> linhas = ReadAllLinesCSV(PATH);
-            linhas.RemoveAll(x => x.Split(";")[0] == IdNoticias.ToString());
+            linhas.RemoveAll(x => x.Split(";")[0] == id.ToString());
             RewriteCSV(PATH, linhas);
         }
     }

@@ -38,7 +38,7 @@ namespace EMPLAYERS.Controllers
                     Directory.CreateDirectory(folder);
                 }
 
-                var path = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot/img/",file.FileName);
+                var path = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot/img/",folder,file.FileName);
                       using (var stream = new FileStream(path, FileMode.Create))  
                 {  
                     file.CopyTo(stream);  
@@ -53,10 +53,19 @@ namespace EMPLAYERS.Controllers
 
             noticiaModel1.Create(novaNoticia);
 
-            ViewBag.Equipes = noticiaModel1.ReadAll();
+            ViewBag.Noticias = noticiaModel1.ReadAll();
 
 
 
+            return LocalRedirect("~/Noticias");
+        }
+
+         [Route("Noticias/id")]
+        public IActionResult Excluir(int Id)
+        {
+           
+            noticiaModel1.Delete(Id);
+            ViewBag.Noticias = noticiaModel1.ReadAll();
             return LocalRedirect("~/Noticias");
         }
 

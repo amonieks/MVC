@@ -21,7 +21,6 @@ C:\Users\monie\OneDrive\Documentos\SENAI\MVC\EMPLAYERS\obj\Debug\netcoreapp3.1\E
 C:\Users\monie\OneDrive\Documentos\SENAI\MVC\EMPLAYERS\obj\Debug\netcoreapp3.1\EMPLAYERS.RazorCoreGenerate.cache
 C:\Users\monie\OneDrive\Documentos\SENAI\MVC\EMPLAYERS\obj\Debug\netcoreapp3.1\Razor\Views\Equipe\Index.cshtml.g.cs
 C:\Users\monie\OneDrive\Documentos\SENAI\MVC\EMPLAYERS\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\monie\OneDrive\Documentos\SENAI\MVC\EMPLAYERS\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\monie\OneDrive\Documentos\SENAI\MVC\EMPLAYERS\obj\Debug\netcoreapp3.1\Razor\Views\Noticias\Index.cshtml.g.cs
 C:\Users\monie\OneDrive\Documentos\SENAI\MVC\EMPLAYERS\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\monie\OneDrive\Documentos\SENAI\MVC\EMPLAYERS\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs

@@ -59,6 +59,7 @@ namespace EMPLAYERS.Models
 
             return LocalRedirect("~/Equipe");
         }
+        
 
         [Route("Equipe/id")]
         public IActionResult Excluir(int id)
